@@ -53,6 +53,8 @@ public class GPStracker implements LocationListener {
         return null;
     }
 
+    // Starts the tracker by starting to request updates of the location manager after checking
+    //  if GPS permission is granted and GPS is turned on
     public void startTracking() {
         if (ContextCompat.checkSelfPermission(context, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
             Toast.makeText(context, "Permission not granted", Toast.LENGTH_SHORT).show();
