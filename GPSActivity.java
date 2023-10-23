@@ -289,7 +289,7 @@ public class GPSActivity extends AppCompatActivity implements GPStracker.Locatio
             carFactor = 0.15;
             pubTransFactor = 0.04;
             selectedTransportMode = "car";
-            carImage.setAlpha(0.3f);
+            carImage.setAlpha(1f);
             pubTransImage.setAlpha(0.3f);
             Toast.makeText(this, "Error loading data. Data has been reset.", Toast.LENGTH_LONG).show();
         }
