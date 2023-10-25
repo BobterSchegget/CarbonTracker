@@ -20,6 +20,9 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
+        Intent intent = new Intent(MainActivity.this, GPSActivity.class);
+        startActivity(intent);
+        
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
@@ -35,13 +38,4 @@ public class MainActivity extends AppCompatActivity {
             }
         });
     }
-
-    /**
-     * Prints out a toast message.
-     * @param message is the displayed text.
-     */
-    private void toastMessage(String message) {
-        Toast.makeText(MainActivity.this, message, Toast.LENGTH_SHORT).show();
-    }
-
 }
