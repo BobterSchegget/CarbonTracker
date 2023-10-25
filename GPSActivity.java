@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 
 import android.annotation.SuppressLint;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.location.Location;
 import android.os.Bundle;
@@ -49,9 +50,9 @@ public class GPSActivity extends AppCompatActivity implements GPStracker.Locatio
     private static double savedCarbonPercentage;
     private static double currentCarbonValue;
     private static double currentCarbonPercentage;
-    private static double carbonGoal = 5;
-    private static double carFactor = 0.15;
-    private static double pubTransFactor = 0.04;
+    private static double carbonGoal;
+    private static double carFactor;
+    private static double pubTransFactor;
     private static String selectedTransportMode = "car";
     private static String selectedPerformanceMode = "kilograms";
 
@@ -80,6 +81,8 @@ public class GPSActivity extends AppCompatActivity implements GPStracker.Locatio
         returnButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                Intent intent = new Intent(GPSActivity.this, SettingsActivity.class);
+                startActivity(intent);
                 finish();
             }
         });
@@ -191,7 +194,7 @@ public class GPSActivity extends AppCompatActivity implements GPStracker.Locatio
         deltaDistance = calculateTotalDistance(trackedLocations);
         deltaCarbonValue = calculateCarbonSaved(deltaDistance);
         currentCarbonValue = savedCarbonValue + deltaCarbonValue;
-        currentCarbonPercentage = currentCarbonValue / carbonGoal;
+        currentCarbonPercentage = (currentCarbonValue / carbonGoal) * 100;
         progressValueView.setText(String.format("%.3f", currentCarbonValue));
         altProgressValueView.setText(String.format("%.1f", currentCarbonPercentage));
         progressBar.setProgress((int) currentCarbonPercentage);
